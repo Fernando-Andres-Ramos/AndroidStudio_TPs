@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TP1-LOGIN</string>
+    <string name="inputEmail">Email</string>
+    <string name="inputPassword">Password</string>
+    <string name="buttonText">Log in</string>
+    <string name="errorEmail">Correo electrónico inválido, verificar.</string>
+    <string name="errorPassword">Contraseña inválida, por favor, verificar."</string>
+    <string name="successLogin">Login exitoso. ¡Bienvenido!.</string>
+</resources>

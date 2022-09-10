@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="inputFontSize">24sp</dimen>
+    <dimen name="messageFontSize">18sp</dimen>
+    <dimen name="buttonMarginTop">30dp</dimen>
+</resources>
