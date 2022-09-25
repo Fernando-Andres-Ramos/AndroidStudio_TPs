@@ -26,7 +26,7 @@
         app:layout_constraintBottom_toTopOf="@id/age"
         app:layout_constraintLeft_toLeftOf="@id/age"
         app:layout_constraintRight_toRightOf="parent"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/text_size_list"
         />
 
     <TextView
@@ -38,7 +38,7 @@
         app:layout_constraintBottom_toTopOf="@id/country"
         app:layout_constraintLeft_toRightOf="@id/picture"
         app:layout_constraintRight_toRightOf="parent"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/text_size_list"
         android:layout_marginLeft="10dp"
         />
 
@@ -51,7 +51,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/age"
         app:layout_constraintRight_toRightOf="parent"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/text_size_list"
         />
 
 
