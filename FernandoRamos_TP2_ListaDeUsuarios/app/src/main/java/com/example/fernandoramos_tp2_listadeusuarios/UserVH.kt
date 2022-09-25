@@ -14,11 +14,13 @@ class UserVH(userView: View) : RecyclerView.ViewHolder(userView) {
     val full_nameTV: TextView
     val ageTV: TextView
     val countryTV: TextView
+    val imgTV: ImageView
 
     // Cuerpo del constructor
     init {
         full_nameTV = userView.findViewById(R.id.full_name)
         ageTV = userView.findViewById(R.id.age)
         countryTV = userView.findViewById(R.id.country)
+        imgTV = userView.findViewById(R.id.picture)
     }
 }

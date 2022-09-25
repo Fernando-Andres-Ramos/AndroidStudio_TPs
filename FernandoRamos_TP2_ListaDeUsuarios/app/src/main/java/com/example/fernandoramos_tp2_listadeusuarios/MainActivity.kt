@@ -29,6 +29,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun createList(){
         val Users = getUsers()
-        list!!.adapter == MyAdapter(Users)
+        list!!.adapter = MyAdapter(Users)
     }
 }
