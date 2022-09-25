@@ -1,8 +1,10 @@
 package com.example.fernandoramos_tp2_listadeusuarios
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
@@ -36,10 +38,19 @@ class UsersListAdapter (
     }
 
     //Enlaza cada dato de la posición correspondiente con su lugar en el ViewHolder
-    override fun onBindViewHolder(holder: UserVH, position: Int) {
-        holder.full_nameTV.text = users[position].fullName
-        holder.ageTV.text = users[position].age.toString()
-        holder.countryTV.text = users[position].country
+    override fun onBindViewHolder(holder: UserVH, position:Int) {
+        val user = users[position]
+        holder.full_nameTV.text = user.fullName
+        holder.ageTV.text = user.age.toString()
+        holder.countryTV.text = user.country
+
+        holder.itemView.setOnClickListener(object: View.OnClickListener{
+            override fun onClick(v: View?) {
+                val intent = Intent(context, Activity_detail::class.java)
+                intent.putExtra("userID", user.id)
+                context.startActivity(intent)
+            }
+        })
     }
 
     //Retorna cuantos Items deben verse

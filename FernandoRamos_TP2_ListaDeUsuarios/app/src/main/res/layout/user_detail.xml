@@ -19,7 +19,6 @@
 
     <TextView
         android:id="@+id/full_name"
-        android:text="Full name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/picture"
@@ -31,7 +30,6 @@
 
     <TextView
         android:id="@+id/age"
-        android:text="Age:Num"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/full_name"
@@ -43,7 +41,6 @@
 
     <TextView
         android:id="@+id/country"
-        android:text="Country"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/age"
@@ -55,7 +52,6 @@
 
     <TextView
         android:id="@+id/email"
-        android:text="Email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/country"
@@ -67,7 +63,6 @@
 
     <TextView
         android:id="@+id/phone"
-        android:text="Phone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/email"
@@ -79,7 +74,6 @@
 
     <TextView
         android:id="@+id/address"
-        android:text="Address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/phone"
