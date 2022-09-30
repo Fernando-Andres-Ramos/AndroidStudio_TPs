@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class Activity_detail: AppCompatActivity() {
 
-    private val usersRepo = UsersDB()
+    private val usersRepo = UsersDB(this)
     private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,8 +15,9 @@ class Activity_detail: AppCompatActivity() {
 
         /* Recibo la información de la activity "padre" que invoco a esta activity */
         /* La información se traspasa con intent en este caso */
-        val userID = intent.getIntExtra("userID", -1)
+        val userID = intent.getStringExtra("userID")
         val foundUser = usersRepo.findUserByID(userID)
+
 
         /* Chequeo que se encuentra el usuario por su ID */
         if(foundUser==null)

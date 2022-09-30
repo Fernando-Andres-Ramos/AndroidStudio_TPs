@@ -7,19 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-
-
+import com.bumptech.glide.Glide
 
 
 //El adapter recibe el contexto,luego una vista. Y recibe el ViewHolder el cual sera el "molde" para estos datos.
 class UsersListAdapter (
-    private val context: Context)
-    :RecyclerView.Adapter<UserVH>(){
+    private val context: Context,
+    private val UserClicked: (User) -> Unit
+) :RecyclerView.Adapter<UserVH>(){
 
-    private var users: Array<User> = UsersDB().getUsers()
+    private var users: List<User> = emptyList()
 
     // Establece la lista de películas que queremos mostrar, y avisa a RecyclerView que hubo cambios
-    fun setDataForAdapter (newUsers: Array<User>){
+    fun setDataForAdapter (newUsers: List<User>){
         this.users = newUsers
         notifyDataSetChanged()
     }
@@ -41,8 +41,9 @@ class UsersListAdapter (
     override fun onBindViewHolder(holder: UserVH, position:Int) {
         val user = users[position]
         holder.full_nameTV.text = user.fullName
-        holder.ageTV.text = user.age.toString()
+        holder.ageTV.text = user.age
         holder.countryTV.text = user.country
+        Glide.with(context).load(user.img).into(holder.imgTV)
 
         holder.itemView.setOnClickListener(object: View.OnClickListener{
             override fun onClick(v: View?) {
