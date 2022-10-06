@@ -32,14 +32,14 @@ class Activity_detail: AppCompatActivity() {
         val country = findViewById<TextView>(R.id.country)
         val email = findViewById<TextView>(R.id.email)
         val phoneNumber = findViewById<TextView>(R.id.phone)
-        val streetAddress= findViewById<TextView>(R.id.address)
+        val postcode= findViewById<TextView>(R.id.postcode)
 
         /* Asignar los valores correspondientes del repo a la vista */
         fullName.text = user.fullName
-        age.text = user.age.toString()
+        age.text = user.age
         country.text = user.country
         email.text = user.email
-        phoneNumber.text = user.phone.toString()
-        streetAddress.text = user.address
+        phoneNumber.text = user.phone
+        postcode.text = user.postalCode
     }
 }

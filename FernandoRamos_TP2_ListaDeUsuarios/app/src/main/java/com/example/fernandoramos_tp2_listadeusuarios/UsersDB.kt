@@ -2,7 +2,9 @@ package com.example.fernandoramos_tp2_listadeusuarios
 
 import android.content.Context
 import android.util.Log
+import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.addAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
 import retrofit2.Callback
@@ -68,19 +70,18 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 /* Repositorio de datos mockeados. */
 class UsersDB (context: Context){
 
-    private val randomUserKey = "17ab1c8e"
+    private val region: String = "us,es,br,fr,au"
+    private val cantUsers: String = "25"
     private val serviceAPI: ServiceRandomUser
 
     init {
-        val moshi: Moshi = Moshi.Builder()      // Builder -> objeto constructor
-            .add(KotlinJsonAdapterFactory())    // Agregamos esto para que Moshi pueda convertir clases de Kotlin a Json automáticamente
+        val moshi: Moshi = Moshi.Builder() // Builder -> objeto constructor
+            .add(KotlinJsonAdapterFactory())// Agregamos esto para que Moshi pueda convertir clases de Kotlin a Json automáticamente
             .build()
 
-        val conversorMoshiRetrofit = MoshiConverterFactory.create(moshi)
-
         val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("https://www.omdbapi.com/")
-            .addConverterFactory(conversorMoshiRetrofit)
+            .baseUrl("https://randomuser.me/")
+            .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient())
             .build()
 
         serviceAPI = retrofit.create(ServiceRandomUser::class.java)
@@ -90,7 +91,7 @@ class UsersDB (context: Context){
         res: (List<User>) -> Unit ,
         err: (Throwable) -> Unit
     ){
-        val requestToApi = serviceAPI.search(apikey = randomUserKey, type = "movie", s="Terminator")
+        val requestToApi = serviceAPI.search(cant = cantUsers, region = region)
 
 
         requestToApi.enqueue(object : Callback<ResponseFromApi>{
@@ -100,22 +101,24 @@ class UsersDB (context: Context){
             ) {
                 if (response.isSuccessful) {
                     val result: ResponseFromApi? = response.body()
+
+                    Log.d("Response","$result")
                     if (result == null) {
                         throw IllegalStateException("Llamada exitosa, pero no esta la lista de peliculas")
                     } else {
-                        val usersAPI = result.Search
+                        val usersAPI = result.results
                         val users = ArrayList<User>()
 
                         for (userAPI in usersAPI) {
                             val user = User(
-                                id = userAPI.imdbID,
-                                fullName = userAPI.Title,
-                                age = userAPI.Year,
-                                img = userAPI.Poster,
-                                address = "",
-                                email = "",
-                                phone = "",
-                                country = ""
+                                id = userAPI.login.uuid,
+                                fullName = "${userAPI.name.first} ${userAPI.name.last}",
+                                age = "Edad: ${userAPI.dob.age}",
+                                img = userAPI.picture.large,
+                                postalCode = userAPI.location.postcode,
+                                email = userAPI.email,
+                                phone = userAPI.phone,
+                                country = userAPI.location.country
                             )
                             users.add(user)
                         }
@@ -135,4 +138,5 @@ class UsersDB (context: Context){
         return null
     }
 }
+
 
