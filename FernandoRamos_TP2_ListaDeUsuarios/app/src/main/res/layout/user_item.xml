@@ -6,7 +6,7 @@
     android:background="@color/itemBackground"
     android:paddingHorizontal="20dp"
     android:paddingVertical="10dp"
-    android:layout_marginVertical="5dp">
+    android:layout_marginVertical="3dp">
 
     <ImageView
         android:id="@+id/picture"
@@ -27,6 +27,7 @@
         app:layout_constraintLeft_toLeftOf="@id/age"
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="@dimen/text_size_list"
+        android:textColor="@color/white"
         />
 
     <TextView
@@ -40,6 +41,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="@dimen/text_size_list"
         android:layout_marginLeft="10dp"
+        android:textColor="@color/white"
         />
 
     <TextView
@@ -52,6 +54,7 @@
         app:layout_constraintLeft_toLeftOf="@id/age"
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="@dimen/text_size_list"
+        android:textColor="@color/white"
         />
 
 
