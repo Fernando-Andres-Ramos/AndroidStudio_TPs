@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="5dp">
+    android:padding="5dp"
+    android:background="@color/itemBackground">
 
     <ImageView
         android:id="@+id/picture"
@@ -26,6 +27,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="@dimen/text_size_detail"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         />
 
     <TextView
@@ -37,6 +40,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="@dimen/text_size_detail"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         />
 
     <TextView
@@ -48,6 +53,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="@dimen/text_size_detail"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         />
 
     <TextView
@@ -59,6 +66,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="@dimen/text_size_detail"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         />
 
     <TextView
@@ -70,6 +79,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="@dimen/text_size_detail"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         />
 
     <TextView
@@ -81,6 +92,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:textSize="@dimen/text_size_detail"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         />
 
 

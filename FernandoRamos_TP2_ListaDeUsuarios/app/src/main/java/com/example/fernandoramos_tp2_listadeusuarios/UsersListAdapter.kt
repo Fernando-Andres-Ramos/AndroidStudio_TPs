@@ -49,6 +49,13 @@ class UsersListAdapter (
             override fun onClick(v: View?) {
                 val intent = Intent(context, Activity_detail::class.java)
                 intent.putExtra("userID", user.id)
+                intent.putExtra("fullName",user.fullName)
+                intent.putExtra("age",user.age)
+                intent.putExtra("country",user.country)
+                intent.putExtra("email",user.email)
+                intent.putExtra("phone",user.phone)
+                intent.putExtra("postalCode",user.postalCode)
+                intent.putExtra("img",user.img)
                 context.startActivity(intent)
             }
         })

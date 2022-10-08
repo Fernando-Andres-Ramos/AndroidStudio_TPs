@@ -1,13 +1,13 @@
 package com.example.fernandoramos_tp2_listadeusuarios
 
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 
 class Activity_detail: AppCompatActivity() {
 
-    private val usersRepo = UsersDB(this)
-    private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,15 +15,14 @@ class Activity_detail: AppCompatActivity() {
 
         /* Recibo la información de la activity "padre" que invoco a esta activity */
         /* La información se traspasa con intent en este caso */
-        val userID = intent.getStringExtra("userID")
-        val foundUser = usersRepo.findUserByID(userID)
 
-
-        /* Chequeo que se encuentra el usuario por su ID */
-        if(foundUser==null)
-            throw IllegalArgumentException("No hay Usuario con el id $userID")
-        else
-            user = foundUser
+        val nombre = intent.getStringExtra("fullName")
+        val edad = intent.getStringExtra("age")
+        val pais = intent.getStringExtra("country")
+        val mail = intent.getStringExtra("email")
+        val telefono = intent.getStringExtra("phone")
+        val postal = intent.getStringExtra("postalCode")
+        val imagen = intent.getStringExtra("img")
 
 
         /* Instanciar elementos de la vista */
@@ -33,13 +32,15 @@ class Activity_detail: AppCompatActivity() {
         val email = findViewById<TextView>(R.id.email)
         val phoneNumber = findViewById<TextView>(R.id.phone)
         val postcode= findViewById<TextView>(R.id.postcode)
+        val img = findViewById<ImageView>(R.id.picture)
 
         /* Asignar los valores correspondientes del repo a la vista */
-        fullName.text = user.fullName
-        age.text = user.age
-        country.text = user.country
-        email.text = user.email
-        phoneNumber.text = user.phone
-        postcode.text = user.postalCode
+        fullName.text = nombre
+        age.text = edad
+        country.text = pais
+        email.text = mail
+        phoneNumber.text = telefono
+        postcode.text = postal
+        Glide.with(this).load(imagen).into(img)
     }
 }

@@ -16,9 +16,14 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 /* Repositorio de datos mockeados. */
 class UsersDB (context: Context){
 
+    /* Obtener personas de estos paises */
     private val region: String = "us,es,br,fr,au"
+
+    /* Cantidad de personas obtenidas */
     private val cantUsers: String = "25"
+
     private val serviceAPI: ServiceRandomUser
+
 
     init {
         val moshi: Moshi = Moshi.Builder() // Builder -> objeto constructor
@@ -33,14 +38,19 @@ class UsersDB (context: Context){
         serviceAPI = retrofit.create(ServiceRandomUser::class.java)
     }
 
+    /* Función/Metodo para obtener usuarios. Se le pasa 2 callbacks */
     fun getUsers(
         res: (List<User>) -> Unit ,
         err: (Throwable) -> Unit
     ){
+
+        /* Se hace la petición a la url por retrofit, pasandole parametros. */
         val requestToApi = serviceAPI.search(cant = cantUsers, region = region)
 
-
+        /* Poner el request en espera */
         requestToApi.enqueue(object : Callback<ResponseFromApi>{
+
+            /* Cuando se obtiene respuesta del request */
             override fun onResponse(
                 call: Call<ResponseFromApi>,
                 response: Response<ResponseFromApi>
@@ -48,9 +58,8 @@ class UsersDB (context: Context){
                 if (response.isSuccessful) {
                     val result: ResponseFromApi? = response.body()
 
-                    Log.d("Response","$result")
                     if (result == null) {
-                        throw IllegalStateException("Llamada exitosa, pero no esta la lista de peliculas")
+                        throw IllegalStateException("Llamada exitosa, pero no hay usuarios que mostrar")
                     } else {
                         val usersAPI = result.results
                         val users = ArrayList<User>()
@@ -79,9 +88,6 @@ class UsersDB (context: Context){
         })
     }
 
-    fun findUserByID(id:String?):User?{
-        return null
-    }
 }
 
 
