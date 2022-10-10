@@ -70,7 +70,7 @@ class UsersDB (context: Context){
                                 fullName = "${userAPI.name.first} ${userAPI.name.last}",
                                 age = "Edad: ${userAPI.dob.age}",
                                 img = userAPI.picture.large,
-                                postalCode = userAPI.location.postcode,
+                                adress = "${userAPI.location.street.name} ${userAPI.location.street.number}",
                                 email = userAPI.email,
                                 phone = userAPI.phone,
                                 country = userAPI.location.country

@@ -54,7 +54,7 @@ class UsersListAdapter (
                 intent.putExtra("country",user.country)
                 intent.putExtra("email",user.email)
                 intent.putExtra("phone",user.phone)
-                intent.putExtra("postalCode",user.postalCode)
+                intent.putExtra("postalCode",user.adress)
                 intent.putExtra("img",user.img)
                 context.startActivity(intent)
             }
