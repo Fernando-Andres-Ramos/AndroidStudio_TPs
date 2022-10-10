@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         list = findViewById(R.id.list)
         // Le doy al adapter el contexto en donde sera utilizado y un callback que setea un usuario clickeado
         adapter = UsersListAdapter(this) { user ->
-            val intent = Intent(this, Activity_detail::class.java)
+            val intent = Intent(this, ActivityDetail::class.java)
             intent.putExtra("idUser", user.id)
             startActivity(intent)
         }

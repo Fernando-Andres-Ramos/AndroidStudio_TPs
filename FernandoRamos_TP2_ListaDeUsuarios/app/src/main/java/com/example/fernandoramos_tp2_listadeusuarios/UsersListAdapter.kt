@@ -47,7 +47,7 @@ class UsersListAdapter (
 
         holder.itemView.setOnClickListener(object: View.OnClickListener{
             override fun onClick(v: View?) {
-                val intent = Intent(context, Activity_detail::class.java)
+                val intent = Intent(context, ActivityDetail::class.java)
                 intent.putExtra("userID", user.id)
                 intent.putExtra("fullName",user.fullName)
                 intent.putExtra("age",user.age)
