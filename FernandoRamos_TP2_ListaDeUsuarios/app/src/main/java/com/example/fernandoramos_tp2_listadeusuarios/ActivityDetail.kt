@@ -64,6 +64,7 @@ class ActivityDetail: AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when(v.id){
             R.id.phone -> callNumber("${phoneNumber.text}")
+            R.id.email -> sendEmail("${email.text}")
         }
     }
 
@@ -71,6 +72,12 @@ class ActivityDetail: AppCompatActivity(), View.OnClickListener {
     private fun callNumber(number: String) {
         val intent = Intent(Intent.ACTION_DIAL)
         intent.data = Uri.parse("tel:$number")
+        startActivity(intent)
+    }
+
+    private fun sendEmail(emailAddress: String){
+        val intent = Intent(Intent.ACTION_SENDTO)
+        intent.data = Uri.parse("mailto:$emailAddress");
         startActivity(intent)
     }
 }
