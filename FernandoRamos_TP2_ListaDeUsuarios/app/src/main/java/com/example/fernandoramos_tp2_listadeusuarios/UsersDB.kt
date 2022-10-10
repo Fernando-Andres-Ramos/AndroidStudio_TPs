@@ -2,9 +2,7 @@ package com.example.fernandoramos_tp2_listadeusuarios
 
 import android.content.Context
 import android.util.Log
-import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.addAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
 import retrofit2.Callback
@@ -57,7 +55,6 @@ class UsersDB (context: Context){
             ) {
                 if (response.isSuccessful) {
                     val result: ResponseFromApi? = response.body()
-
                     if (result == null) {
                         throw IllegalStateException("Llamada exitosa, pero no hay usuarios que mostrar")
                     } else {

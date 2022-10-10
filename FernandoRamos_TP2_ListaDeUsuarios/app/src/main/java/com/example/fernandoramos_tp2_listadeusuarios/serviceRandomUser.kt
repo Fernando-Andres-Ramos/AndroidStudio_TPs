@@ -52,16 +52,10 @@ data class PictureStructure(
 
 data class LocationStructure(
     val street: StreetStructure,
-    val coordinates: CoordinatesStructure,
     val country: String
 )
 
 data class StreetStructure(
     val number: Int,
     val name: String
-)
-
-data class CoordinatesStructure(
-    val latitude: String,
-    val longitude: String
 )

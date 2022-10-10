@@ -16,7 +16,7 @@ class ActivityDetail: AppCompatActivity(), View.OnClickListener {
     private lateinit var country: TextView
     private lateinit var email: TextView
     private lateinit var phoneNumber: TextView
-    private lateinit var postcode: TextView
+    private lateinit var adress: TextView
     private lateinit var img: ImageView
 
 
@@ -42,7 +42,7 @@ class ActivityDetail: AppCompatActivity(), View.OnClickListener {
         country = findViewById(R.id.country)
         email = findViewById(R.id.email)
         phoneNumber = findViewById(R.id.phone)
-        postcode= findViewById(R.id.postcode)
+        adress= findViewById(R.id.postcode)
         img = findViewById(R.id.picture)
 
         /* Asignar los valores correspondientes del repo a la vista */
@@ -51,20 +51,20 @@ class ActivityDetail: AppCompatActivity(), View.OnClickListener {
         country.text = pais
         email.text = mail
         phoneNumber.text = telefono
-        postcode.text = postal
+        adress.text = postal
         Glide.with(this).load(imagen).into(img)
-
 
         /* Asignar onclicks */
         phoneNumber.setOnClickListener(this)
         email.setOnClickListener(this)
-        postcode.setOnClickListener(this)
+        adress.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
         when(v.id){
             R.id.phone -> callNumber("${phoneNumber.text}")
             R.id.email -> sendEmail("${email.text}")
+            R.id.postcode -> getInfo("${adress.text}")
         }
     }
 
@@ -75,9 +75,18 @@ class ActivityDetail: AppCompatActivity(), View.OnClickListener {
         startActivity(intent)
     }
 
+    /* Función para redactar un nuevo correo electronico a esta dirección */
     private fun sendEmail(emailAddress: String){
         val intent = Intent(Intent.ACTION_SENDTO)
         intent.data = Uri.parse("mailto:$emailAddress");
+        startActivity(intent)
+    }
+
+    /* Función para obtener la dirección en el mapa*/
+    private fun getInfo(info:String){
+        val geoInfo = info.replace(' ','%')
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse("geo:0,0?q=$geoInfo")
         startActivity(intent)
     }
 }
